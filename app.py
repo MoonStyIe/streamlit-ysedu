@@ -65,6 +65,10 @@ def main():
     else:
         st.error('비활성화 상태')
 
+    # Check Box
+    if st.checkbox('show/hide'):
+        st.text('무언가를 보여줘!!')
+
 
 
 
