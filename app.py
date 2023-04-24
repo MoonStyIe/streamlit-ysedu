@@ -47,6 +47,12 @@ def main():
     st.title('write()')
     st.write(iris)
 
+    myCode = """
+    def hello():
+        print("hi")
+    """
+    st.code(myCode, language="Python")
+
 
 
 if __name__ == '__main__':
