@@ -53,6 +53,19 @@ def main():
     """
     st.code(myCode, language="Python")
 
+    # 위젯, button 기능 활용
+    name = 'MoonStyle'
+    if st.button('Submit'):
+        st.write(f'name: {name.upper()}')
+
+    # RadioButton
+    s_state = st.radio('Status', ('활성화', '비활성화'))
+    if s_state == '활성화':
+        st.success('활성화 상태')
+    else:
+        st.error('비활성화 상태')
+
+
 
 
 if __name__ == '__main__':
