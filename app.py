@@ -4,6 +4,11 @@ import pandas as pd
 from utils import p_lans
 from PIL import Image
 
+# Data VIZ
+import plotly.express as px
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 def main():
     # Title
     st.title("Hello World")
@@ -99,6 +104,31 @@ def main():
     with open('data/song.mp3', 'rb') as rb:
         audio_file = rb.read()
         st.audio(audio_file, format="audio/mp3")
+
+    fig = px.scatter(data_frame=iris,
+                     x='sepal_length',
+                     y='sepal_width')
+    st.plotly_chart(fig)
+
+    choice = st.selectbox('프로그래밍 언어', iris['species'].unique())
+    # st.title(choice)
+
+    result = iris[iris['species'] == choice].reset_index(drop=True)
+    # st.dataframe(result)
+
+    col1, col2 = st.columns([0.5, 0.5], gap='large')
+    with col1:
+        fig2, ax = plt.subplots()
+        # ax.scatter(x=iris['petal_length'], y=iris['sepal_width'])
+        sns.scatterplot(result, x = 'petal_length',
+                        y = 'sepal_width')
+        st.pyplot(fig2)
+
+    with col2:
+        fig3, ax = plt.subplots()
+        ax.scatter(x = result['sepal_length'], y = result['sepal_width'])
+        st.pyplot(fig3)
+
 
 if __name__ == '__main__':
     main()
